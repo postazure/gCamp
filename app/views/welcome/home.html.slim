@@ -1,0 +1,41 @@
+.jumbotron.h1
+  |gCamp
+  p
+  .small Your life organized.
+
+.row
+  .col-md-4
+    = image_tag "team.jpg", class: "img-responsive"
+    p
+    .panel.panel-primary
+      .panel-heading.panel-title.h3
+        | Tasks
+      .panel-body
+        p Grouped by projects and lists. Just the way you like'em.
+
+  .col-md-4
+    = image_tag "people_table.jpg", class: "img-responsive"
+    p
+    .panel.panel-primary
+      .panel-heading.panel-title.h3
+        | Documents
+      .panel-body
+        ul
+          li Upload
+          li Comment
+          li Revise
+
+  .col-md-4
+    = image_tag "woman_laptop.jpg", class: "img-responsive"
+    p
+    .panel.panel-primary
+        .panel-heading.panel-title.h3
+          | Tasks
+        .panel-body
+          ul
+            li Comment on tasks and documents
+            li Get email notifications
+br
+- quotes.each do |quote|
+  p = quote
+  end

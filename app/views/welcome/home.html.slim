@@ -1,6 +1,7 @@
 .jumbotron.h1
   |gCamp
   p
+  br
   .small Your life organized.
 
 .row
@@ -36,6 +37,11 @@
             li Comment on tasks and documents
             li Get email notifications
 br
-- quotes.each do |quote|
-  p = quote
+
+- quotes.each do |array|
+
+  - quote, origin = array
+  blockquote
+    p = quote
+    footer.cite = origin
   end

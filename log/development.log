@@ -11847,3 +11847,33 @@ Started GET "/faq" for 127.0.0.1 at 2014-11-21 13:24:15 -0800
 Processing by AboutController#faq as HTML
   Rendered about/faq.html.slim within layouts/application (2.4ms)
 Completed 200 OK in 82ms (Views: 81.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/faq" for 127.0.0.1 at 2014-11-21 13:27:19 -0800
+Processing by AboutController#faq as HTML
+  Rendered about/faq.html.slim within layouts/application (12.8ms)
+Completed 200 OK in 240ms (Views: 230.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/faq" for 127.0.0.1 at 2014-11-21 13:27:21 -0800
+Processing by AboutController#faq as HTML
+  Rendered about/faq.html.slim within layouts/application (3.1ms)
+Completed 200 OK in 95ms (Views: 94.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/faq" for 127.0.0.1 at 2014-11-21 13:27:22 -0800
+Processing by AboutController#faq as HTML
+  Rendered about/faq.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 90ms (Views: 89.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/terms" for 127.0.0.1 at 2014-11-21 13:27:23 -0800
+Processing by AboutController#terms as HTML
+  Rendered about/terms.html.slim within layouts/application (2.6ms)
+Completed 200 OK in 114ms (Views: 113.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/faq" for 127.0.0.1 at 2014-11-21 13:27:24 -0800
+Processing by AboutController#faq as HTML
+  Rendered about/faq.html.slim within layouts/application (0.1ms)
+Completed 200 OK in 105ms (Views: 104.0ms | ActiveRecord: 0.0ms)

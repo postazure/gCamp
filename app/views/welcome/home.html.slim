@@ -1,8 +1,6 @@
-.jumbotron.h1
-  |gCamp
-  p
-  br
-  .small Your life organized.
+.jumbotron
+  h1 gCamp
+  p.text-muted Your life organized.
 
 .row
   .col-md-4
@@ -11,7 +9,7 @@
     .panel.panel-primary
       .panel-heading.panel-title.h3
         | Tasks
-      .panel-body
+      .panel-body.panel-fixed
         p Grouped by projects and lists. Just the way you like'em.
 
   .col-md-4
@@ -20,7 +18,7 @@
     .panel.panel-primary
       .panel-heading.panel-title.h3
         | Documents
-      .panel-body
+      .panel-body.panel-fixed
         ul
           li Upload
           li Comment
@@ -32,16 +30,15 @@
     .panel.panel-primary
         .panel-heading.panel-title.h3
           | Tasks
-        .panel-body
+        style="min-height: "
+        .panel-body.panel-fixed
           ul
             li Comment on tasks and documents
             li Get email notifications
-br
 
-- quotes.each do |array|
 
-  - quote, origin = array
-  blockquote
-    p = quote
-    footer.cite = origin
+
+- quotes.each do |quote, origin|
+  h4 = "\"#{quote}\""
+  em.text-muted = "- #{origin}"
   end

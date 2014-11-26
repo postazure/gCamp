@@ -1,4 +1,4 @@
-class HomeText < ActiveRecord::Base
+class HomeText
   def self.quotes
     [
       ['Failure is not an option. Everyone has to Succeed', 'Arnold Schwarzenegger'],

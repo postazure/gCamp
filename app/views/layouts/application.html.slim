@@ -19,11 +19,10 @@ body
 
     = yield
     footer
-      - unless params == {"action"=>"new", "controller"=>"tasks"}
         hr
         = link_to "About", about_path
         |  | <!---->
         = link_to "Terms", terms_path
         |  | <!---->
         = link_to "FAQ", faq_path
-        end
+        

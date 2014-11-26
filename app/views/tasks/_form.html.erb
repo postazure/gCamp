@@ -23,6 +23,15 @@
       <%= f.date_field :due_date, class:"form-control" %>
     </div>
   </div>
+
+  <% if params["action"] == "edit" %>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-5">
+        <%= f.check_box :completed, class:"" %>
+        <%= f.label :completed, class:"control-label text-center" %>
+      </div>
+    </div>
+  <% end %>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
     <%= f.submit class:"btn btn-primary" %>

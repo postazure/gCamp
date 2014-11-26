@@ -13,10 +13,15 @@
 
   <div class="form-group">
     <%= f.label :description, class:"col-sm-2 control-label text-center" %>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <%= f.text_field :description, class:"form-control" %>
     </div>
-
+  </div>
+  <div class="form-group">
+    <%= f.label :due_date, class:"col-sm-2 control-label text-center" %>
+    <div class="col-sm-3">
+      <%= f.date_field :due_date, class:"form-control" %>
+    </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">

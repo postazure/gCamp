@@ -4,7 +4,17 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    if params[:completed]
+      @tasks = Task.where(completed: false)
+      @active_link = "Incomplete"
+    else
+      @tasks = Task.all
+      @active_link = "All"
+    end
+
+
+
+    # @tasks = Task.all
   end
 
   # GET /tasks/1

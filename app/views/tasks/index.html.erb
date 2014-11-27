@@ -1,10 +1,11 @@
 <header class="page-header">
 
+
   <%= link_to 'New Task', new_task_path, class:"btn btn-info pull-right" %>
     <div class="pull-right" style="line-height:2.5; margin-right:10px;" >
-      <%= link_to 'All', tasks_path %>
+      <%= link_to 'All', tasks_path, class:("active-link" if @active_link == "All") %>
       |
-      <%= link_to 'Incomplete', tasks_path %>
+      <%= link_to 'Incomplete', tasks_path(completed: false), class:("active-link" if @active_link == "Incomplete") %>
     </div>
   <h1>Listing tasks</h1>
 </header>

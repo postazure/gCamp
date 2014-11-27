@@ -12,7 +12,7 @@ class TasksController < ApplicationController
       @active_link = "All"
     end
 
-
+    
 
     # @tasks = Task.all
   end

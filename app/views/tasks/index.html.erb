@@ -1,12 +1,13 @@
 <header class="page-header">
+
   <%= link_to 'New Task', new_task_path, class:"btn btn-info pull-right" %>
-  <div class="pull-right">
-    <%= link_to 'All', tasks_path, class:"btn"%> | <%= link_to 'Incomplete', tasks_path, class:"btn" %>
-  </div>
+    <div class="pull-right" style="line-height:2.5; margin-right:10px;" >
+      <%= link_to 'All', tasks_path %>
+      |
+      <%= link_to 'Incomplete', tasks_path %>
+    </div>
   <h1>Listing tasks</h1>
-
 </header>
-
 
 
 <table class="table">
@@ -22,7 +23,7 @@
 
   <tbody>
 
-    <% @tasks.each do |task| %>
+    <%  @tasks.each do |task| %>
       <tr>
         <td><%= task.description %></td>
         <td><%= task.completed %></td>

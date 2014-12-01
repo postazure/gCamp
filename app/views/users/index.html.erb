@@ -1,0 +1,38 @@
+<header class="page-header">
+  <% if notice %>
+    <div class="alert alert-success text-center" >
+      <p id="notice"><%= notice %></p>
+    </div>
+  <% end %>
+
+  <%= link_to "New User", new_user_path, class:"btn btn-info pull-right" %>
+  <h1>Users</h1>
+</header>
+
+<body>
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="col-sm-3">
+          Name
+        </th>
+        <th class="col-sm-9">
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody >
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= "#{user.first_name} #{user.last_name}" %>
+          </td>
+          <td>
+            <%= mail_to user.email %>
+          </td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>

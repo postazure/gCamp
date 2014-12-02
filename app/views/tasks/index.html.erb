@@ -2,6 +2,12 @@
 
 
   <%= link_to 'New Task', new_task_path, class:"btn btn-info pull-right" %>
+
+  <%= link_to export_path, class:"btn btn-info pull-right span" do %>
+    <span class="glyphicon glyphicon-download-alt"></span>
+    <span>Download CSV</span>
+  <% end %>
+
     <div class="pull-right" style="line-height:2.5; margin-right:10px;" >
       <%= link_to 'All', tasks_path, class:("active-link" if @active_link == "All") %>
       |

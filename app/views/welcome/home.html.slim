@@ -38,7 +38,7 @@
 
 
 
-- quotes.each do |quote, origin|
-  h4 = "\"#{quote}\""
-  em.text-muted = "- #{origin}"
+- quotes.each do |quote|
+  h4 = "\"#{quote.quote}\""
+  em.text-muted = "- #{quote.origin}"
   end

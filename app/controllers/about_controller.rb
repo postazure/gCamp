@@ -6,6 +6,7 @@ class AboutController < ApplicationController
   end
 
   def faq
-    render locals: {faq: AboutText.faqs}
+    faqs = Faq.all
+    render locals: {faqs: faqs}
   end
 end

@@ -50,7 +50,7 @@ class TasksController < ApplicationController
     csv_data_output = []
 
     csv_headers = tasks.first.attributes.map {|key, v| key.to_s}
-    csv_data_output.push(csv_headers.join(","))
+    csv_data_output.push(csv_headers.join(", "))
 
     tasks.each do |task|
       csv_line = task.attributes.map {|k, value| value}

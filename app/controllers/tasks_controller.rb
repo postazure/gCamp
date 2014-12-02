@@ -47,22 +47,17 @@ class TasksController < ApplicationController
 
   def export
     tasks = Task.all
-    working_array = []
-    compile_string = ""
-    tasks.first.attributes.each do |key, value|
-      compile_string = compile_string + "#{key.to_s}, "
-    end
-    working_array.push(compile_string)
+    csv_data_output = []
 
+    csv_headers = tasks.first.attributes.map {|key, v| key.to_s}
+    csv_data_output.push(csv_headers.join(","))
 
     tasks.each do |task|
-      compile_string = ""
-      task.attributes.each do |key, value|
-        compile_string = compile_string + "#{value}, "
-      end
-      working_array.push(compile_string)
+      csv_line = task.attributes.map {|k, value| value}
+      csv_data_output.push(csv_line.join(", "))
     end
-    send_data working_array.join("\n"), :filename => "tasks.csv"
+
+    send_data csv_data_output.join("\n"), :filename => "exported_tasks.csv"
   end
 
   private

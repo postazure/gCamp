@@ -1,17 +1,20 @@
 <header class="page-header">
 
+  <div class="pull-right">
+    <%= link_to export_path, class:"btn btn-info span" do %>
+      <span class="glyphicon glyphicon-download-alt"></span>
+      <span>Download CSV</span>
+    <% end %>
 
-  <%= link_to 'New Task', new_task_path, class:"btn btn-info pull-right" %>
+    <%= link_to 'New Task', new_task_path, class:"btn btn-info" %>
+  </div>
 
-  <%= link_to export_path, class:"btn btn-info pull-right span" do %>
-    <span class="glyphicon glyphicon-download-alt"></span>
-    <span>Download CSV</span>
-  <% end %>
-
-    <div class="pull-right" style="line-height:2.5; margin-right:10px;" >
+    <div class="pull-right" style="margin-right:10px;" >
+      <div style="line-height:2.5">
       <%= link_to 'All', tasks_path, class:("active-link" if @active_link == "All") %>
       |
       <%= link_to 'Incomplete', tasks_path(completed: false), class:("active-link" if @active_link == "Incomplete") %>
+      </div>
     </div>
   <h1>Tasks</h1>
 </header>
@@ -20,9 +23,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Description</th>
-      <th>Completed</th>
-      <th>Due</th>
+      <th><%= link_to "Description", tasks_path, style:"color:black; pointer-events: none;" %></th>
+      <th><%= link_to "Completed", tasks_path, style:"color:black; pointer-events: none;" %></th>
+      <th><%= link_to "Due", tasks_path, style:"color:black; pointer-events: none;" %></th>
 
       <th colspan="3"></th>
     </tr>
@@ -35,9 +38,11 @@
         <td><%= task.completed %></td>
         <td><%= task.due_date.strftime("%m/%d/%Y") unless task.due_date.nil? %></td>
         <td>
-          <%= link_to 'Destroy', task, class:"btn btn-danger pull-right", method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to 'Edit', edit_task_path(task),  class:"btn btn-info pull-right" %>
-          <%= link_to 'Show', task, class:"btn btn-success pull-right" %>
+          <div class="pull-right">
+            <%= link_to 'Destroy', task, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_task_path(task),  class:"btn btn-info" %>
+            <%= link_to 'Show', task, class:"btn btn-success" %>
+          </div>
         </td>
       </tr>
     <% end %>

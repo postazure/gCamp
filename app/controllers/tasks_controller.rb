@@ -2,8 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:completed]
-      @tasks = Task.where(completed: false)
+    if params[:completed] == "true"
+      @tasks = Task.where(completed: params[:completed])
       @active_link = "Incomplete"
     else
       @tasks = Task.all

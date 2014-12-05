@@ -17,11 +17,10 @@ body
 
   .container
     br
-    <% if notice %>
-      <div class="alert alert-success text-center" >
-        <p id="notice"><%= notice %></p>
-      </div>
-    <% end %>
+    - if notice
+      .alert.alert-success.text-center
+        p notice
+      end
     = yield
     footer
         hr

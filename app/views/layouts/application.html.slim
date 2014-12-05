@@ -17,9 +17,9 @@ body
 
   .container
     br
-    - if notice
+    - if flash[:notice]
       .alert.alert-success.text-center
-        p notice
+        = flash[:notice]
       end
     = yield
     footer

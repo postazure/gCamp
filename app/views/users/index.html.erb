@@ -25,7 +25,8 @@
       <% @users.each do |user| %>
         <tr>
           <td>
-            <%= "#{user.first_name} #{user.last_name}" %>
+            <% first_last_name = "#{user.first_name} #{user.last_name}" %>
+            <%= link_to first_last_name, user_path(user) %>
           </td>
           <td>
             <%= mail_to user.email %>

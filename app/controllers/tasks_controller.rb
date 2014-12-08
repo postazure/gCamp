@@ -2,17 +2,30 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:completed] == "true"
-      @tasks = Task.where(completed: params[:completed])
+    @tasks = Task.all
+
+
+    if params[:filter_completed] == "true"
+      @tasks = @tasks.where(completed: false)
       @active_link = "Incomplete"
     else
-      @tasks = Task.all
       @active_link = "All"
+    end
+
+    if params[:order_by] == "description"
+      @tasks = @tasks.order(:description)
+    end
+
+    if params[:order_by] == "due_date"
+      @tasks = @tasks.order(:due_date)
+    end
+
+    if params[:order_by] == "completed"
+      @tasks = @tasks.order(:completed)
     end
   end
 
   def show
-
   end
 
   def new
@@ -20,7 +33,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-
   end
 
   def create

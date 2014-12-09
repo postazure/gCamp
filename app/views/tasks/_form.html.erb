@@ -1,21 +1,19 @@
 <%= form_for(@task, html:{class:"form-horizontal", role:"form"}) do |f| %>
   <% if @task.errors.any? %>
-  <div class="row">
-    <div class="col-sm-offset-2 col-sm-5">
-
-      <div class="alert alert-danger">
-        <div id="error_explanation">
-          <h4><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h4>
-
-          <ul>
-          <% @task.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+    <div class="row">
+      <div class="col-sm-offset-2 col-sm-5">
+        <div class="alert alert-danger">
+          <div id="error_explanation">
+            <h4><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h4>
+            <ul>
+              <% @task.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 
   <div class="form-group">
@@ -24,6 +22,7 @@
       <%= f.text_field :description, class:"form-control" %>
     </div>
   </div>
+
   <div class="form-group">
     <%= f.label :due_date, class:"col-sm-2" %>
     <div class="col-sm-3">
@@ -39,14 +38,16 @@
       </div>
     </div>
   <% end %>
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
-    <%= f.submit class:"btn btn-primary" %>
-    <% if params["action"] == "new" %>
-      <%= link_to 'cancel', tasks_path, class:"btn btn-default" %>
-    <% else %>
-      <%= link_to 'cancel', @task, class:"btn btn-default" %>
-    <% end %>
+      <%= f.submit class:"btn btn-primary" %>
+
+      <% if params["action"] == "new" %>
+        <%= link_to 'cancel', tasks_path, class:"btn btn-default" %>
+      <% else %>
+        <%= link_to 'cancel', @task, class:"btn btn-default" %>
+      <% end %>
     </div>
   </div>
 <% end %>

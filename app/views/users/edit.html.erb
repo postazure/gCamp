@@ -3,13 +3,11 @@
 </header>
 <%= render 'form' %>
 <div class="form-horizontal">
-
-<div class="form-group">
-  <div class="col-sm-offset-2 col-sm-4">
-    <div class="well text-center">
-
-      <%= link_to "Delete User", user_path(@user), class:" btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <div class="well text-center">
+        <%= link_to "Delete User", user_path(@user), class:" btn btn-danger", method: :delete, data: {confirm: "Are you sure?"} %>
+      </div>
     </div>
   </div>
-</div>
 </div>

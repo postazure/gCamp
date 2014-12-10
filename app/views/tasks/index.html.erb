@@ -22,9 +22,9 @@
 <table class="table">
   <thead>
     <tr>
-      <th><%= link_to "Description", tasks_path(tasks_filter_params({"order_by" => "description"})) %></th>
-      <th><%= link_to "Completed", tasks_path(tasks_filter_params({"order_by" => "completed"})) %></th>
-      <th><%= link_to "Due", tasks_path(tasks_filter_params({"order_by" => "due_date"})) %></th>
+      <th><%= link_to "Description", tasks_path(tasks_filter_params({:order_by => "description"})) %></th>
+      <th><%= link_to "Completed", tasks_path(tasks_filter_params({:order_by => "completed"})) %></th>
+      <th><%= link_to "Due", tasks_path(tasks_filter_params({:order_by => "due_date"})) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>

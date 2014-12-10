@@ -12,17 +12,14 @@ class TasksController < ApplicationController
       @active_link = "All"
     end
 
-    if params[:order_by] == "description"
-      @tasks = @tasks.order(:description)
-    end
+    @tasks = {
+      "description" => @tasks.order(:description),
+      "due_date" => @tasks.order(:due_date),
+      "completed" => @tasks.order(:completed),
+      nil => @tasks
+    }[params[:order_by]]
 
-    if params[:order_by] == "due_date"
-      @tasks = @tasks.order(:due_date)
-    end
-
-    if params[:order_by] == "completed"
-      @tasks = @tasks.order(:completed)
-    end
+    @tasks = @tasks.reverse if params[:resort] == "true"
   end
 
   def show

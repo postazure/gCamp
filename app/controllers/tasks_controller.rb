@@ -4,7 +4,6 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all
 
-
     if params[:filter_completed] == "true"
       @tasks = @tasks.where(completed: false)
       @active_link = "Incomplete"
@@ -12,14 +11,17 @@ class TasksController < ApplicationController
       @active_link = "All"
     end
 
+    direction = {
+      "desc" => :desc,
+      "asc" => :asc,
+    }[params[:direction]]
+
     @tasks = {
-      "description" => @tasks.order(:description),
-      "due_date" => @tasks.order(:due_date),
-      "completed" => @tasks.order(:completed),
+      "description" => @tasks.order(description: direction),
+      "due_date" => @tasks.order(due_date: direction),
+      "completed" => @tasks.order(completed: direction),
       nil => @tasks
     }[params[:order_by]]
-
-    @tasks = @tasks.reverse if params[:resort] == "true"
   end
 
   def show

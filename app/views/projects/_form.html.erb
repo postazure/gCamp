@@ -1,20 +1,7 @@
 <%= form_for @project, html:{class:"form-horizontal", role:"form"} do |f| %>
   <div class="row">
     <div class="col-sm-offset-2 col-sm-5">
-
-      <% if @project.errors.any? %>
-        <div class="alert alert-danger">
-          <div id="error_explanation">
-            <h4><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h4>
-
-            <ul>
-              <% @project.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: "shared/errors", locals:{form_instance: @project} %>
     </div>
   </div>
 

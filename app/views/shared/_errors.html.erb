@@ -1,0 +1,16 @@
+<% if form_instance.errors.any? %>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-5">
+      <div class="alert alert-danger">
+        <div id="error_explanation">
+          <h4><%= pluralize(form_instance.errors.count, "error") %> prohibited this <%= form_instance.class %> from being saved:</h4>
+          <ul>
+            <% form_instance.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

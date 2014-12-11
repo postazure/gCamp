@@ -28,6 +28,16 @@ feature "Projects" do
 
       expect(page).to have_content("My Test Project")
     end
+
+    scenario "displays errors" do
+      visit root_path
+      click_on "projects-footer-action"
+      click_on "new-project-action"
+      fill_in "project-name-field", with: ""
+      click_on "submit-project-action"
+
+      expect("error_explanation").to be_present
+    end
   end
 
   feature "Editing Project" do
@@ -55,6 +65,19 @@ feature "Projects" do
 
       expect(page).to have_content("Project Updated")
       expect(page.current_path).to eq(project_path(test_project))
+    end
+
+    scenario "display errors" do
+      Project.create!(name: "My Test Project")
+
+      visit root_path
+      click_on "projects-footer-action"
+      click_on "My Test Project"
+      click_on "edit-project-action"
+      fill_in "project-name-field", with: ""
+      click_on "submit-project-action"
+
+      expect("error_explanation").to be_present
     end
   end
 

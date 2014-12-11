@@ -1,11 +1,9 @@
 <%= form_for(@task, html:{class:"form-horizontal", role:"form"}) do |f| %>
-  <% if @task.errors.any? %>
     <div class="row">
       <div class="col-sm-offset-2 col-sm-5">
         <%= render partial: "shared/errors", locals:{form_instance: @task} %>
       </div>
     </div>
-  <% end %>
 
   <div class="form-group">
     <%= f.label :description, class:"col-sm-2" %>

@@ -39,6 +39,7 @@ feature "Projects" do
       click_on "My Test Project"
       click_on "edit-project-action"
 
+      expect(find_field("project-name-field").value).to eq("My Test Project")
       expect(page.current_path).to eq(edit_project_path(test_project))
     end
 

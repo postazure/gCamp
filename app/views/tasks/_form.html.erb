@@ -19,7 +19,7 @@
   <div class="form-group">
     <%= f.label :description, class:"col-sm-2" %>
     <div class="col-sm-5">
-      <%= f.text_field :description, class:"form-control" %>
+      <%= f.text_field :description, class:"form-control", id:"task-description-field" %>
     </div>
   </div>
 
@@ -41,7 +41,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
-      <%= f.submit class:"btn btn-primary" %>
+      <%= f.submit class:"btn btn-primary", id:"submit-task-action" %>
 
       <% if params["action"] == "new" %>
         <%= link_to 'cancel', tasks_path, class:"btn btn-default" %>

@@ -2,35 +2,30 @@ require "rails_helper"
 
 feature "Tasks" do
   scenario "index" do
-    Task.create!(description: "Task A")
-    Task.create!(description: "Task B")
-    Task.create!(description: "Task C")
+    Task.create!(description: "Test Task")
 
     visit root_path
-    click_on "Tasks"
+    click_on "tasks-footer-action"
 
-    expect(page).to have_content("Task A")
-    expect(page).to have_content("Task B")
-    expect(page).to have_content("Task C")
+    expect(page).to have_content("Test Task")
+    expect(page.current_path).to eq(tasks_path)
   end
 
   feature "Creating Tasks" do
     scenario "new view" do
       visit root_path
-      click_on "Tasks"
+      click_on "tasks-footer-action"
 
-      click_on "New Task"
-      expect(page).to have_content("New task")
-      expect(page).to have_content("Description")
-      expect(page).to have_content("Due date")
+      click_on "new-task-action"
+      expect(page.current_path).to eq(new_task_path)
     end
 
     scenario "create" do
       visit root_path
-      click_on "Tasks"
-      click_on "New Task"
-      fill_in "Description", with: "My New Task"
-      click_on "Create Task"
+      click_on "tasks-footer-action"
+      click_on "new-task-action"
+      fill_in "task-description-field", with: "My New Task"
+      click_on "submit-task-action"
 
       expect(page).to have_content("My New Task")
     end
@@ -38,27 +33,27 @@ feature "Tasks" do
 
   feature "Editing Tasks" do
     scenario "edit view" do
-      Task.create!(description: "Edit Me")
+      test_task = Task.create!(description: "Edit Me")
 
       visit root_path
-      click_on "Tasks"
-      click_on "Edit"
+      click_on "tasks-footer-action"
+      click_on "edit-task#{test_task.id}-action"
 
-      expect(page).to have_content("Editing task")
-      expect(find_field("Description").value).to eq("Edit Me")
-      expect(page).to have_content("Due date")
+      expect(find_field("task-description-field").value).to eq("Edit Me")
+      expect(page.current_path).to eq(edit_task_path(test_task))
     end
 
     scenario "update" do
-      Task.create!(description: "Edit Me")
+      test_task = Task.create!(description: "Edit Me")
 
       visit root_path
-      click_on "Tasks"
-      click_on "Edit"
-      fill_in "Description", with: "I've been updated"
-      click_on "Update Task"
+      click_on "tasks-footer-action"
+      click_on "edit-task#{test_task.id}-action"
+      fill_in "task-description-field", with: "I've been updated"
+      click_on "submit-task-action"
 
       expect(page).to have_content("I've been updated")
+      expect(page.current_path).to eq(task_path(test_task))
     end
   end
 
@@ -66,8 +61,8 @@ feature "Tasks" do
     Task.create!(description: "Delete Me")
 
     visit root_path
-    click_on "Tasks"
-    click_on "Destroy"
+    click_on "tasks-footer-action"
+    click_on "destroy-task-action"
 
     expect(page).to have_no_content("Delete Me")
   end
@@ -76,8 +71,8 @@ feature "Tasks" do
     Task.create!(description: "Show Me")
 
     visit root_path
-    click_on "Tasks"
-    click_on "Show"
+    click_on "tasks-footer-action"
+    click_on "show-task-action"
 
     expect(page).to have_content("Show Me")
   end

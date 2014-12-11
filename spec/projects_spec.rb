@@ -5,7 +5,7 @@ feature "Projects" do
     Project.create!(name: "My Test Project")
 
     visit root_path
-    click_on  "Projects"
+    click_on  "projects-footer-action"
 
     expect(page.current_path).to eq(projects_path)
   end
@@ -13,18 +13,18 @@ feature "Projects" do
   feature "Creating a Project" do
     scenario "new page" do
       visit root_path
-      click_on "Projects"
-      click_on "New Project"
+      click_on "projects-footer-action"
+      click_on "new-project-action"
 
       expect(page.current_path).to eq(new_project_path)
     end
 
     scenario "create" do
       visit root_path
-      click_on "Projects"
-      click_on "New Project"
-      fill_in "Name", with: "My Test Project"
-      click_on "Create Project"
+      click_on "projects-footer-action"
+      click_on "new-project-action"
+      fill_in "project-name-field", with: "My Test Project"
+      click_on "submit-project-action"
 
       expect(page).to have_content("My Test Project")
     end
@@ -35,9 +35,9 @@ feature "Projects" do
       test_project = Project.create!(name: "My Test Project")
 
       visit root_path
-      click_on "Project"
+      click_on "projects-footer-action"
       click_on "My Test Project"
-      click_on "Edit"
+      click_on "edit-project-action"
 
       expect(page.current_path).to eq(edit_project_path(test_project))
     end
@@ -46,11 +46,11 @@ feature "Projects" do
       test_project = Project.create!(name: "My Test Project")
 
       visit root_path
-      click_on "Project"
+      click_on "projects-footer-action"
       click_on "My Test Project"
-      click_on "Edit"
-      fill_in "Name", with: "Project Updated"
-      click_on "Update Project"
+      click_on "edit-project-action"
+      fill_in "project-name-field", with: "Project Updated"
+      click_on "submit-project-action"
 
       expect(page).to have_content("Project Updated")
       expect(page.current_path).to eq(project_path(test_project))
@@ -61,9 +61,9 @@ feature "Projects" do
     Project.create!(name: "My Test Project")
 
     visit root_path
-    click_on "Project"
+    click_on "projects-footer-action"
     click_on "My Test Project"
-    click_on "Delete"
+    click_on "delete-project-action"
 
     expect(page).to have_no_content("My Test Project")
     expect(page.current_path).to eq(projects_path)
@@ -73,7 +73,7 @@ feature "Projects" do
     test_project = Project.create!(name: "My Test Project")
 
     visit root_path
-    click_on "Project"
+    click_on "projects-footer-action"
     click_on "My Test Project"
 
     expect(page.current_path).to eq(project_path(test_project))

@@ -2,16 +2,7 @@
   <% if @task.errors.any? %>
     <div class="row">
       <div class="col-sm-offset-2 col-sm-5">
-        <div class="alert alert-danger">
-          <div id="error_explanation">
-            <h4><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h4>
-            <ul>
-              <% @task.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
+        <%= render partial: "shared/errors", locals:{form_instance: @task} %>
       </div>
     </div>
   <% end %>

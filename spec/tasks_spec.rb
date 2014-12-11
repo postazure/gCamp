@@ -29,6 +29,16 @@ feature "Tasks" do
 
       expect(page).to have_content("My New Task")
     end
+
+    scenario "displays errors" do
+      visit root_path
+      click_on "tasks-footer-action"
+      click_on "new-task-action"
+      fill_in "task-description-field", with: ""
+      click_on "submit-task-action"
+
+      expect("error_explanation").to be_present
+    end
   end
 
   feature "Editing Tasks" do
@@ -54,6 +64,18 @@ feature "Tasks" do
 
       expect(page).to have_content("I've been updated")
       expect(page.current_path).to eq(task_path(test_task))
+    end
+
+    scenario "displays errors" do
+      test_task = Task.create!(description: "Edit Me")
+
+      visit root_path
+      click_on "tasks-footer-action"
+      click_on "edit-task#{test_task.id}-action"
+      fill_in "task-description-field", with: "I've been updated"
+      click_on "submit-task-action"
+
+      expect("error_explanation").to be_present
     end
   end
 

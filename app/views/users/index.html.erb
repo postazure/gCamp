@@ -1,5 +1,5 @@
 <header class="page-header">
-  <%= link_to "New User", new_user_path, class:"btn btn-info pull-right" %>
+  <%= link_to "New User", new_user_path, class:"btn btn-info pull-right", id:"new-user-action" %>
   <h1>Users</h1>
 </header>
 
@@ -14,7 +14,7 @@
           Email
         </th>
         <th>
-          
+
         </th>
       </tr>
     </thead>
@@ -29,7 +29,7 @@
             <%= mail_to user.email %>
           </td>
           <td>
-            <%= link_to "edit", edit_user_path(user) %>
+            <%= link_to "edit", edit_user_path(user), id:"edit-user#{user.id}-action" %>
           </td>
         </tr>
       <% end %>

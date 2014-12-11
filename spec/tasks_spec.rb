@@ -58,21 +58,21 @@ feature "Tasks" do
   end
 
   scenario "delete" do
-    Task.create!(description: "Delete Me")
+    test_task = Task.create!(description: "Delete Me")
 
     visit root_path
     click_on "tasks-footer-action"
-    click_on "destroy-task-action"
+    click_on "destroy-task#{test_task.id}-action"
 
     expect(page).to have_no_content("Delete Me")
   end
 
   scenario "#show" do
-    Task.create!(description: "Show Me")
+    test_task = Task.create!(description: "Show Me")
 
     visit root_path
     click_on "tasks-footer-action"
-    click_on "show-task-action"
+    click_on "show-task#{test_task.id}-action"
 
     expect(page).to have_content("Show Me")
   end

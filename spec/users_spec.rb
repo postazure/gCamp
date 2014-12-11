@@ -41,6 +41,15 @@ feature "Users" do
       expect(page).to have_content("Smith")
       expect(page).to have_content("email@smithy.com")
     end
+
+    scenario "displays errors" do
+      visit root_path
+      click_on "users-footer-action"
+      click_on "new-user-action"
+      click_on "submit-user-action"
+
+      expect("error_explanation").to be_present
+    end
   end
 
   feature "Editing Users" do
@@ -74,6 +83,20 @@ feature "Users" do
       expect(page).to have_content("Smit")
       expect(page).to have_content("email@smithy.net")
       expect(page.current_path).to eq(users_path)
+    end
+
+    scenario "displays errors" do
+      test_user = User.create!(first_name: "John", last_name: "Smith", email: "email@smithy.com")
+
+      visit root_path
+      click_on "users-footer-action"
+      click_on "edit-user#{test_user.id}-action"
+      fill_in "first-name-field", with: ""
+      fill_in "last-name-field", with: ""
+      fill_in "email-field", with: ""
+      click_on("submit-user-action")
+
+      expect("error_explanation").to be_present
     end
   end
 

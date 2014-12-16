@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     direction = {
       "desc" => :desc,
       "asc" => :asc,
-      nil => :asc,
+      nil => :desc,
     }[params[:direction]]
 
     @tasks = {

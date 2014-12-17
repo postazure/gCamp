@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gCamp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  </head>
+  <body {data-no-turbolink} >
+    <div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to "gCamp", root_path, class:"navbar-brand" %>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li> <%= link_to "Sign Out", root_path, id:"user-end-session-action" %> </li>
+            <% else %>
+              <li> <%= link_to "Sign Up", signup_path, id:"user-registration-action" %> </li>
+              <li> <%= link_to "Sign In", root_path, id:"user-signin-action" %> </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <br>
+      <% if flash[:notice] %>
+        <div class="alert alert-success text-center">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+
+    <footer class="navbar navbar-fixed-bottom container">
+      <hr>
+      <%= link_to "About", about_path, id:"about-footer-action" %> |
+      <%= link_to "Terms", terms_path, id:"terms-footer-action" %> |
+      <%= link_to "FAQ", faq_path, id:"faq-footer-action" %> |
+      <%= link_to "Tasks", tasks_path, id:"tasks-footer-action" %> |
+      <%= link_to "Projects", projects_path, id:"projects-footer-action" %> |
+      <%= link_to "Users", users_path, id:"users-footer-action" %> |
+    </footer>
+  </body>
+</html>

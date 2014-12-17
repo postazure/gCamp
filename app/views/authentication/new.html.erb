@@ -4,7 +4,7 @@
   <div class="col-sm-7">
 
     <div class="well">
-      <h2>Sign into gCamp!</h2>
+      <h2>Sign into gCamp!</h2><br>
 
       <% if flash[:alert] %>
         <div class="alert alert-danger">
@@ -13,11 +13,15 @@
       <% end %>
 
       <%= form_tag signin_path do %>
-        <%= label_tag :email, nil, class:"control-label" %>
-        <%= email_field_tag :email, "", class:"form-control" %><br>
+        <div class="form-group">
+          <%= label_tag :email, nil, class:"control-label" %>
+          <%= email_field_tag :email, "", class:"form-control" %>
+        </div>
 
-        <%= label_tag :password, nil, class:"control-label" %>
-        <%= text_field_tag :password, "", class:"form-control" %><br>
+        <div class="form-group">
+          <%= label_tag :password, nil, class:"control-label" %>
+          <%= text_field_tag :password, "", class:"form-control" %>
+        </div>
 
         <%= submit_tag "Sign In", id:"submit-user", class:"btn btn-primary" %>
       <% end %>

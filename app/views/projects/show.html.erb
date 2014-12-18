@@ -11,6 +11,5 @@
   <li class="active"> <%= @project.name %> </li>
 </ol>
 
-<% if @project.tasks.count > 0 %>
+
   <%= link_to "#{pluralize(@project.tasks.count, "Task")}", tasks_path(@project) %>
-<% end %>

@@ -1,4 +1,4 @@
-<%= form_for(@task, html:{class:"form-horizontal", role:"form"}) do |f| %>
+<%= form_for([@project, @task], html:{class:"form-horizontal", role:"form"}) do |f| %>
 
   <%= render partial: "shared/errors", locals:{form_instance: @task} %>
 
@@ -30,9 +30,9 @@
       <%= f.submit class:"btn btn-primary", id:"submit-task-action" %>
 
       <% if params["action"] == "new" %>
-        <%= link_to 'cancel', tasks_path, class:"btn btn-default" %>
+        <%= link_to 'cancel', project_tasks_path(params[:project_id]), class:"btn btn-default" %>
       <% else %>
-        <%= link_to 'cancel', @task, class:"btn btn-default" %>
+        <%= link_to 'cancel', project_task_path(@project, @task), class:"btn btn-default" %>
       <% end %>
     </div>
   </div>

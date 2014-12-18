@@ -4,9 +4,9 @@
   <td><%= task.due_date.strftime("%m/%d/%Y") unless task.due_date.nil? %></td>
   <td>
     <div class="pull-right">
-      <%= link_to 'Destroy', task, class:"btn btn-danger", id:"destroy-task#{task.id}-action", method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= link_to 'Edit', edit_task_path(task),  class:"btn btn-info", id:"edit-task#{task.id}-action" %>
-      <%= link_to 'Show', task, class:"btn btn-success", id:"show-task#{task.id}-action" %>
+      <%= link_to 'Destroy', project_task_path(params[:project_id], task), class:"btn btn-danger", id:"destroy-task#{task.id}-action", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_project_task_path(params[:project_id], task),  class:"btn btn-info", id:"edit-task#{task.id}-action" %>
+      <%= link_to 'Show', project_task_path(params[:project_id], task), class:"btn btn-success", id:"show-task#{task.id}-action" %>
     </div>
   </td>
 </tr>

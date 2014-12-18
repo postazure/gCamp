@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
+
   def index
-    @tasks = Task.all
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks
 
     if params[:filter_completed] == "true"
       @tasks = @tasks.where(completed: false)
@@ -26,27 +28,33 @@ class TasksController < ApplicationController
   end
 
   def show
+
   end
 
   def new
-    @task = Task.new
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new
   end
 
   def edit
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
   end
 
   def create
-    @task = Task.new(task_params)
+    @project = Project.find(params[:project_id])
+    @task = @project.tasks.new(task_params)
     if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
+      redirect_to project_task_path(@project, @task), notice: 'Task was successfully created.'
     else
       render :new
     end
   end
 
   def update
+    @project = Project.find(params[:project_id])
     if @task.update(task_params)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      redirect_to [@project, @task], notice: 'Task was successfully updated.'
     else
       render :edit
     end
@@ -54,7 +62,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    redirect_to project_tasks_path, notice: 'Task was successfully destroyed.'
   end
 
   def export

@@ -6,29 +6,35 @@
       <span>Download CSV</span>
     <% end %>
 
-    <%= link_to 'New Task', new_task_path, class:"btn btn-info", id:"new-task-action" %>
+    <%= link_to 'New Task', new_project_task_path, class:"btn btn-info", id:"new-task-action" %>
   </div>
 
     <div class="pull-right" style="margin-right:10px;" >
       <div style="line-height:2.5">
-      <%= link_to 'All', tasks_path(tasks_filter_params({"filter_completed" => nil})), class:("active-link" if @active_link == "All") %>
+      <%= link_to 'All', project_tasks_path(tasks_filter_params({"filter_completed" => nil})), class:("active-link" if @active_link == "All") %>
       |
-      <%= link_to 'Incomplete', tasks_path(tasks_filter_params({"filter_completed" => true})), class:("active-link" if @active_link == "Incomplete") %>
+      <%= link_to 'Incomplete', project_tasks_path(tasks_filter_params({"filter_completed" => true})), class:("active-link" if @active_link == "Incomplete") %>
       </div>
     </div>
-  <h1>Tasks</h1>
+  <h1><%= "Tasks for #{@project.name}" %></h1>
 </header>
+
+<ol class="breadcrumb">
+  <li> <%= link_to "Projects", projects_path %> </li>
+  <li> <%= link_to @project.name, @project %> </li>
+  <li class="active"> <%= "Tasks" %> </li>
+</ol>
+
 
 <table class="table">
   <thead>
     <tr>
-      <th><%= link_to "Description", tasks_path(tasks_filter_params({:order_by => "description"})) %></th>
-      <th><%= link_to "Completed", tasks_path(tasks_filter_params({:order_by => "completed"})) %></th>
-      <th><%= link_to "Due", tasks_path(tasks_filter_params({:order_by => "due_date"})) %></th>
+      <th><%= link_to "Description", project_tasks_path(tasks_filter_params({:order_by => "description"})) %></th>
+      <th><%= link_to "Completed", project_tasks_path(tasks_filter_params({:order_by => "completed"})) %></th>
+      <th><%= link_to "Due", project_tasks_path(tasks_filter_params({:order_by => "due_date"})) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <%= render @tasks %>
   </tbody>

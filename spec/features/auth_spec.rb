@@ -34,7 +34,7 @@ feature "authorization" do
   feature AuthenticationController do
     feature "signin" do
       scenario "sign in with valid login" do
-        test_user = User.create!(
+        User.create!(
           first_name: "Buster",
           last_name: "Bluth",
           email:"buster@bluthcompany.com",
@@ -65,6 +65,27 @@ feature "authorization" do
         expect(page).to have_no_content("Sign Out")
         expect(page.current_path).to eq(signin_path)
       end
+    end
+
+    scenario "signout" do
+      User.create!(
+      first_name: "Buster",
+      last_name: "Bluth",
+      email:"buster@bluthcompany.com",
+      password:"the blue is land",
+      password_confirmation:"the blue is land",
+      )
+
+      visit root_path
+      click_on "user-signin-action"
+      fill_in :email, with: "buster@bluthcompany.com"
+      fill_in :password, with: "the blue is land"
+      click_on "submit-user"
+      click_on "user-signout-action"
+
+      expect(page).to have_content("Sign In")
+      expect(page).to have_no_content("Sign Out")
+      expect(page.current_path).to eq(root_path)
     end
   end
 end

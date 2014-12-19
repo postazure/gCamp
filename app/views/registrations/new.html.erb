@@ -1,18 +1,9 @@
 <div class="col-sm-offset-3">
-
-
   <div class="col-sm-7">
-
     <div class="well">
       <h2>Sign Up for gCamp!</h2><br>
 
-      <% if @user.errors.any? %>
-        <ul class="list-unstyled alert alert-danger">
-          <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <%= render partial: "shared/errors", locals:{form_instance: @user} %>
 
       <%= form_for @user, url:{action: "create"} do |f| %>
         <div class="form-group">

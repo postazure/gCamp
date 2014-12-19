@@ -12,4 +12,5 @@
 </ol>
 
 
-  <%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project), id:"task-index-action" %>
+<%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project), id:"task-index-action" %><br>
+<%= link_to "#{pluralize(@project.memberships.count, "Member")}", project_memberships_path(@project) %>

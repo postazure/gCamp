@@ -1,10 +1,8 @@
 class MembershipsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
-    @new_membership = @project.memberships.new #members not on project
-    #can you add any user to a project?
-
     @memberships = @project.memberships #members on project
+    @new_membership = @project.memberships.new #members not on project
   end
 
   def create

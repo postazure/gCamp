@@ -6,14 +6,18 @@
   <li class="active"> Memberships </li>
 </ol>
 
-<div class="well">
-  <% if alert %>
-    <div class="alert alert-danger">
-      <%= alert %>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-sm-5">
+    <div class="well">
+      <% if alert %>
+        <div class="alert alert-danger">
+          <%= alert %>
+        </div>
+      <% end %>
 
-  <%= render "form" %>
+      <%= render "form" %>
+    </div>
+  </div>
 </div>
 
 <%= render @memberships %>

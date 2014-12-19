@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="col-sm-1" style="line-height:2.5">
-      <%= link_to export_path, class:"span", style:"color:black" do %>
+      <%= link_to project_membership_path(params[:project_id], membership.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"span", style:"color:black" do %>
       <span class="glyphicon glyphicon-remove"></span>
       <% end %>
     </div>

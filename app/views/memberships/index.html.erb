@@ -1,1 +1,19 @@
 <h1> <%= "#{@project.name}: Manage Members" %> </h1>
+
+<ol class="breadcrumb">
+  <li> <%= link_to "Projects", projects_path %> </li>
+  <li> <%= link_to @project.name, project_path(@project) %> </li>
+  <li class="active"> Memberships </li>
+</ol>
+
+<div class="well">
+  <% if alert %>
+    <div class="alert alert-danger">
+      <%= alert %>
+    </div>
+  <% end %>
+
+  <%= render "form" %>
+</div>
+
+<%= render @memberships %>

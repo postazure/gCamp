@@ -17,3 +17,6 @@
 # Faq.create(question: "When will gCamp be finished?", answer: "gCamp is a work in progress. That being said, it should be fully functional by December 2014. Functional. but our developers are going to continue to improve the sight for the foreseeable future. Check in daily for new features and awsome functionality. It's going to blow your mind. Organization is only (well, will only) be a click away. Amazing!")
 
 #^^^^^^^^^^^ Already Seeded ^^^^^^^^^^^^^^^^^^
+
+Role.create(title: "owner")
+Role.create(title: "member")

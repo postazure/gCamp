@@ -6,7 +6,6 @@ class Membership < ActiveRecord::Base
   validates :user_id, presence: true
   validate :user_id_uniqueness_to_project, on: :create
 
-
   def user_id_uniqueness_to_project
     if user_id && Membership.where(project_id: project_id, user_id: user_id).count > 0
       errors.add(:user_id, "already a member of this project")

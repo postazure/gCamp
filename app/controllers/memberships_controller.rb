@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @memberships = @project.memberships #members on project
-    @new_membership = @project.memberships.new #members not on project
+    @membership = @project.memberships.new #members not on project
   end
 
   def create
@@ -11,7 +11,7 @@ class MembershipsController < ApplicationController
     if membership.save
       redirect_to project_memberships_path(@project)
     else
-      redirect_to project_memberships_path(@project), alert: "Please select a user"
+      redirect_to project_memberships_path(@project), alert: membership.errors.full_messages
     end
   end
 
